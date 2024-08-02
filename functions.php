@@ -1,5 +1,18 @@
 <?php
 
+  if(!function_exists('pre_setup')) {
+    function pre_setup() {
+      add_theme_support('custom-logo', [
+        'height'      => 50,
+        'width'       => 130,
+        'flex-width'  => false,
+        'flex-height' => false,
+        'header-text' => '',
+      ]);
+    }
+    add_action('after_setup_theme', 'pre_setup');
+  }
+
   //styles and scripts init
   add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
   function theme_name_scripts() {
@@ -25,5 +38,4 @@
     wp_enqueue_script( 'googleapis', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap', array('jquery', 'gmap3'), null, true );
     wp_enqueue_script( 'contact', get_template_directory_uri() . '/plugins/jquery/contact.js', array('jquery'), null, true );
     wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array('jquery'), null, true );
-
   }
