@@ -20,111 +20,43 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
+            
                     <div class="row">
+                      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                        <!-- Цикл WordPress -->
                         <div class="col-lg-6">
                             <div class="blog-post">
-                                <img src="images/blog/blog-1.jpg" alt="" class="img-fluid">
+                                <?php
+                                  if( has_post_thumbnail() ) {
+                                    the_post_thumbnail( 'medium', array('class' => "img-fluid"));
+                                  }
+                                  else {
+                                    echo '<img class="img-fluid" src="'.get_template_directory_uri().'/images/blog/blog-1.jpg" />';
+                                  }
+                                ?>
                                 <div class="mt-4 mb-3 d-flex">
                                     <div class="post-author mr-3">
                                         <i class="fa fa-user"></i>
-                                        <span class="h6 text-uppercase">Михаил Третьяков</span>
+                                        <span class="h6 text-uppercase"><?php the_author(); ?></span>
                                     </div>
 
                                     <div class="post-info">
                                         <i class="fa fa-calendar-check"></i>
-                                        <span>20 июня 2020</span>
+                                        <span><?php the_time('j F Y'); ?></span>
                                     </div>
                                 </div>
-                                <a href="blog-single.html" class="h4 ">Маркетинговые фишки для нового сайта</a>
-                                <p class="mt-3">Как внедрить несколько значимых фишек на своем новом сайте и выйти в топ, даже если вы до этого не занимались SEO.</p>
-                                <a href="blog-single.html" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
+                                <a href="<?php echo get_the_permalink(); ?>" class="h4 "><?php the_title(); ?></a>
+                                <p class="mt-3"><?php the_excerpt(); ?></p>
+                                <a href="<?php echo get_the_permalink(); ?>" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
-
-                         <div class="col-lg-6">
-                            <div class="blog-post">
-                                <img src="images/blog/blog-2.jpg" alt="" class="img-fluid">
-                                <div class="mt-4 mb-3 d-flex">
-                                    <div class="post-author mr-3">
-                                        <i class="fa fa-user"></i>
-                                        <span class="h6 text-uppercase">Олег Торпяков</span>
-                                    </div>
-
-                                    <div class="post-info">
-                                        <i class="fa fa-calendar-check"></i>
-                                        <span>12 апреля 2020</span>
-                                    </div>
-                                </div>
-                                <a href="blog-single.html" class="h4 ">Использовать шаблоны — плохо? </a>
-                                <p class="mt-3">Отвечаю на больной вопрос от наших клиентов: стоит ли использовать шаблоны для сайта в своих проектах.</p>
-                                <a href="blog-single.html" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
+                        
+                      <?php endwhile; else : ?>
+                        <p>Записей нет.</p>
+                      <?php endif; ?>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="blog-post">
-                                <img src="images/blog/blog-lg.jpg" alt="" class="img-fluid">
-                                <div class="mt-4 mb-3 d-flex">
-                                    <div class="post-author mr-3">
-                                        <i class="fa fa-user"></i>
-                                        <span class="h6 text-uppercase">Марина Цветкова</span>
-                                    </div>
-
-                                    <div class="post-info">
-                                        <i class="fa fa-calendar-check"></i>
-                                        <span>30 марта 2020</span>
-                                    </div>
-                                </div>
-                                <a href="blog-single.html" class="h4 ">Провал в стратегии продвижения</a>
-                                <p class="mt-3">Что делать, если вы наняли некомпетентного специалиста для продвижения? Можно ли спасти проект, который попал в теневой бан или нет.</p>
-                                <a href="blog-single.html" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="blog-post">
-                                <img src="images/blog/blog-3.jpg" alt="" class="img-fluid">
-                                <div class="mt-4 mb-3 d-flex">
-                                    <div class="post-author mr-3">
-                                        <i class="fa fa-user"></i>
-                                        <span class="h6 text-uppercase">Оксана Вальнова</span>
-                                    </div>
-
-                                    <div class="post-info">
-                                        <i class="fa fa-calendar-check"></i>
-                                        <span>1 декабря 2019</span>
-                                    </div>
-                                </div>
-                                <a href="blog-single.html" class="h4 ">Пять способов обойти конкурентов</a>
-                                <p class="mt-3">Поисковая выдача — это всегда конкуренция. Но что делать, чтобы конкуренты остались позади вас? Отвечаю в статье</p>
-                                <a href="blog-single.html" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-
-                            <div class="col-lg-6">
-                            <div class="blog-post">
-                                <img src="images/blog/blog-4.jpg" alt="" class="img-fluid">
-                                <div class="mt-4 mb-3 d-flex">
-                                    <div class="post-author mr-3">
-                                        <i class="fa fa-user"></i>
-                                        <span class="h6 text-uppercase">Мишель Ким</span>
-                                    </div>
-
-                                    <div class="post-info">
-                                        <i class="fa fa-calendar-check"></i>
-                                        <span>10 ноября 2019</span>
-                                    </div>
-                                </div>
-                                <a href="blog-single.html" class="h4 ">Лучшие сервисы для продвижения вашего сайта</a>
-                                <p class="mt-3">Существуют сервисы, котоорые могут помочь продвинуть сайт по СЕО, но есть и мошенники, которые могут оставить вас без денег.</p>
-                                <a href="blog-single.html" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    
 
             </div>
             <div class="col-lg-4">
