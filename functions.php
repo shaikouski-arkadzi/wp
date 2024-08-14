@@ -12,7 +12,7 @@
       //dynamic tag title
       add_theme_support('title-tag');
       add_theme_support('post-thumbnails');
-      set_post_thumbnail_size(730, 480);
+      set_post_thumbnail_size(730, 480, true);
     }
     add_action('after_setup_theme', 'pre_setup');
   }
