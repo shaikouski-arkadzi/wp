@@ -110,6 +110,11 @@
             <div class="col-lg-4">
                       <div class="row">
                         <div class="col-lg-12">
+                        <?php 
+                          if (!dynamic_sidebar('sidebar-blog')) :
+                            dynamic_sidebar('sidebar-blog');
+                          endif; 
+                        ?>
                             <div class="sidebar-widget search">
                                 <div class="form-group">
                                     <input type="text" placeholder="поиск" class="form-control">

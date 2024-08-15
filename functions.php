@@ -141,3 +141,16 @@ function delete_intermediate_image_sizes($sizes){
 }
 
 add_filter( 'intermediate_image_sizes', 'delete_intermediate_image_sizes' );
+
+function custom_widgets_init() {
+  register_sidebar(array(
+    'name'          => esc_html__('Sidebar blog', 'aug24'),
+    'id'            => "sidebar-blog",
+    'before_widget' => '<section id="%1$s" class="sidebar-widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h5 class="widget-title mb-3">',
+    'after_title'   => '</h5>'
+  ));
+}
+
+add_action('widgets_init', 'custom_widgets_init');
