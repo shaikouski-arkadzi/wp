@@ -1282,13 +1282,15 @@ BLOG PAGE
   display: inline-block;
 }
 
-.widget_search i {
+.widget_search button {
   position: absolute;
   right: 0px;
   top: 0px;
   margin-right: 35px;
-  margin-top: 15px;
+  margin-top: 11px;
   color: #635CDB;
+  border: none;
+  background-color: transparent;
 }
 
 .download a {
