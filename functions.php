@@ -47,8 +47,9 @@
   //register several menus
   function menus() {
     $locations = array(
-      'header' => __('Header Menu', 'header_menu'),
-      'footer' => __('Footer Menu', 'footer_menu'),
+      'header' => __('Header Menu', 'aug24'),
+      'footer_left' => __('Footer Left Menu', 'aug24'),
+      'footer_right' => __('Footer Right Menu', 'aug24'),
     );
 
     register_nav_menus($locations);
@@ -150,6 +151,22 @@ function custom_widgets_init() {
     'after_widget'  => '</section>',
     'before_title'  => '<h5 class="widget-title mb-3">',
     'after_title'   => '</h5>'
+  ));
+  register_sidebar(array(
+    'name'          => esc_html__('Текст в подвале', 'aug24'),
+    'id'            => "sidebar-footer-text",
+    'before_widget' => '<div class="footer-widget footer-link %2$s">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h4>',
+    'after_title'   => '</h4>'
+  ));
+  register_sidebar(array(
+    'name'          => esc_html__('Контакты в подвале', 'aug24'),
+    'id'            => "sidebar-footer-contacts",
+    'before_widget' => '<div class="footer-widget footer-text %2$s">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h4>',
+    'after_title'   => '</h4>'
   ));
 }
 
