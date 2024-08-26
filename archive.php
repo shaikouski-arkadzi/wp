@@ -7,7 +7,22 @@
     <div class="row justify-content-center">
       <div class="col-lg-8 m-auto text-center col-sm-12 col-md-12">
         <div class="banner-content content-padding">
-          <h1 class="text-white">Promodise журнал</h1>
+          <h1 class="text-white">
+            <?php
+              if(is_category()) {
+                echo get_queried_object()->name;
+              }
+              if(is_tag()) {
+                echo get_queried_object()->name;
+              }
+              if(is_date()) {
+                echo get_the_date('j F Y');
+              }
+              if(is_author()) {
+                echo get_the_author_meta('display_name');
+              }
+            ?>
+          </h1>
           <p>Полезные статьи про маркетинг и диджитал</p>
         </div>
       </div>
@@ -40,7 +55,7 @@
                         <div class="mt-4 mb-3 d-flex">
                           <div class="post-author mr-3">
                             <i class="fa fa-user"></i>
-                            <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" class="h6 text-uppercase"><?php the_author(); ?></a>
+                            <span class="h6 text-uppercase"><?php the_author(); ?></span>
                           </div>
 
                           <div class="post-info">
@@ -71,7 +86,7 @@
                           <div class="mt-4 mb-3 d-flex">
                             <div class="post-author mr-3">
                               <i class="fa fa-user"></i>
-                              <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" class="h6 text-uppercase"><?php the_author(); ?></a>
+                              <span class="h6 text-uppercase"><?php the_author(); ?></span>
                             </div>
 
                             <div class="post-info">
