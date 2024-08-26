@@ -50,12 +50,12 @@
 
 	$defaults = [
     'fields'               => [
-      'author' => '<div class="col-lg-6">
+      'author' => '<div class="row"><div class="col-lg-6">
         <input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" placeholder="Имя" />
-      </p>',
+      </div>',
       'email'  => '<div class="col-lg-6">
         <input id="email" name="email" class="form-control" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" aria-describedby="email-notes" placeholder="email" />
-      </div>',
+      </div></div>',
       
     ],
     'comment_field'        => '<p class="comment-form-comment">
