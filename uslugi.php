@@ -156,7 +156,7 @@ Template Post Type: page
       }
 
       wp_reset_postdata(); // Сбрасываем $post
-      ?>
+    ?>
     </div>
   </div>
 </section>
@@ -174,18 +174,32 @@ Template Post Type: page
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-3 col-sm-6 col-md-3 text-center">
-        <img src="images/clients/client01.png" alt="partner" class="img-fluid" />
-      </div>
-      <div class="col-lg-3 col-sm-6 col-md-3 text-center">
-        <img src="images/clients/client06.png" alt="partner" class="img-fluid" />
-      </div>
-      <div class="col-lg-3 col-sm-6 col-md-3 text-center">
-        <img src="images/clients/client04.png" alt="partner" class="img-fluid" />
-      </div>
-      <div class="col-lg-3 col-sm-6 col-md-3 text-center">
-        <img src="images/clients/client05.png" alt="partner" class="img-fluid" />
-      </div>
+
+      <?php
+        global $post;
+
+        $query = new WP_Query( [
+          'posts_per_page' => 4,
+          'post_type'      => 'partners',
+        ] );
+
+        if ( $query->have_posts() ) {
+          while ( $query->have_posts() ) {
+            $query->the_post();
+            ?>
+            <div class="col-lg-3 col-sm-6 col-md-3 text-center">
+              <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="partner" class="img-fluid" />
+            </div>
+            <?php
+          }
+        } else {
+          ?>
+          <p>Партнеров не найдено</p>
+          <?php
+        }
+
+        wp_reset_postdata(); // Сбрасываем $post
+      ?>
     </div>
   </div>
 </section>
