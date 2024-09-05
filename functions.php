@@ -855,3 +855,54 @@ function register_post_types(){
 		'query_var'           => true,
 	] );
 }
+
+add_action( 'wp_ajax_(action)', 'my_action_callback' );
+add_action( 'wp_ajax_nopriv_(action)', 'my_action_callback' );
+
+function my_action_callback() {
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    # Email получателя
+    $mail_to = "arkadiy92@gmail.com";
+    
+    # Собираем данные из формы
+    $phone = trim($_POST["phone"]);
+    $name = trim($_POST["name"]);
+    $email = trim($_POST["email"]);
+    $message = trim($_POST["message"]);
+    
+    if ( empty($name) OR empty($email) OR empty($phone) OR empty($message)) {
+        # 400 обработчик
+        http_response_code(400);
+        echo "Пожалуйста, заполните все обязательные поля";
+        exit;
+    }
+    
+    # Mail Content
+    $content = "Имя: $name\n";
+    $content .= "Email: $email\n\n";
+    $content .= "Сообщение:\n$message\n";
+
+    # email заголовок
+    $headers = "От: $name <$email>";
+
+    # Попытка отправки
+    $success = mail($mail_to, $phone, $content, $headers);
+    if ($success) {
+        # Set a 200 (okay) response code.
+        http_response_code(200);
+        echo "Сообщение отправлено";
+    } else {
+        # Set a 500 (internal server error) response code.
+        http_response_code(500);
+        echo "Не получилось отправить";
+    }
+
+  } else {
+      # Not a POST request, set a 403 (forbidden) response code.
+      http_response_code(403);
+      echo "Попробуйте позже";
+  }
+
+  wp_die();
+}
