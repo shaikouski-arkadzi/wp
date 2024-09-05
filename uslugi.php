@@ -149,3 +149,5 @@ Template Post Type: page
 <!--  PARTNER END  -->
 
 <?php get_footer(); ?>
+
+<?php wp_footer(); ?>
