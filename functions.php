@@ -856,6 +856,22 @@ function register_post_types(){
 	] );
 }
 
+add_action( 'phpmailer_init', 'my_phpmailer_example' );
+function my_phpmailer_example( $phpmailer ) {
+
+	$phpmailer->isSMTP();     
+	$phpmailer->Host = 'webmail.active.by';
+	$phpmailer->SMTPAuth = true; // Force it to use Username and Password to authenticate
+	$phpmailer->Port = 465;
+	$phpmailer->Username = 'mail@arkadiy92.ru';
+	$phpmailer->Password = '';
+
+	// Additional settings…
+	//$phpmailer->SMTPSecure = "tls"; // Choose SSL or TLS, if necessary for your server
+	//$phpmailer->From = "you@yourdomail.com";
+	//$phpmailer->FromName = "Your Name";
+}
+
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
 add_action( 'wp_ajax_nopriv_my_action', 'my_action_callback' );
 
@@ -863,7 +879,7 @@ function my_action_callback() {
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     # Email получателя
-    $mail_to = "arkadiy92@gmail.com";
+    $mail_to = "arkshaik@vk.com";
     
     # Собираем данные из формы
     $phone = trim($_POST["phone"]);
@@ -884,10 +900,10 @@ function my_action_callback() {
     $content .= "Сообщение:\n$message\n";
 
     # email заголовок
-    $headers = "От: $name <$email>";
+    $headers = "От: <mail@arkadiy92.ru>";
 
     # Попытка отправки
-    $success = mail($mail_to, $phone, $content, $headers);
+    $success = mail($mail_to, 'Заявка', $content, $headers);
     if ($success) {
         # Set a 200 (okay) response code.
         http_response_code(200);
