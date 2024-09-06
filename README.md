@@ -1,3 +1,4 @@
+```
 <?php
 /*
 Plugin Name: File Upload and Email Plugin
@@ -64,5 +65,5 @@ function handle_file_upload_and_email() {
 }
 add_action('admin_post_handle_file_upload_and_email', 'handle_file_upload_and_email');
 add_action('admin_post_nopriv_handle_file_upload_and_email', 'handle_file_upload_and_email');
-
+```
 [file_upload_form]
