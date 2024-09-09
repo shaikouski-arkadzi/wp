@@ -922,3 +922,16 @@ function my_action_callback() {
 
   wp_die();
 }
+
+add_shortcode( 'foobar', 'foobar_shortcode' );
+function foobar_shortcode( $atts ) {
+
+	$atts = shortcode_atts( [
+		'name' => 'Noname',
+		'age'  => 18,
+	], $atts );
+
+	return "Меня зовут {$atts['name']} мне {$atts['age']} лет";
+}
+
+# [foobar name="Виктор" age="25"]
