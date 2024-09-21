@@ -53,9 +53,9 @@
   //register several menus
   function menus() {
     $locations = array(
-      'header' => __('Header Menu', 'aug24'),
-      'footer_left' => __('Footer Left Menu', 'aug24'),
-      'footer_right' => __('Footer Right Menu', 'aug24'),
+      'header' => 'Header Menu',
+      'footer_left' => 'Footer Left Menu',
+      'footer_right' => 'Footer Right Menu',
     );
 
     register_nav_menus($locations);
@@ -134,7 +134,7 @@
 /*
 Register Navbar
 */
-register_nav_menu('navbar', __('Navbar', 'Основное меню'));
+register_nav_menu('navbar', 'Navbar');
 
 ## отключаем создание миниатюр файлов для указанных размеров
 function delete_intermediate_image_sizes($sizes){
@@ -151,7 +151,7 @@ add_filter( 'intermediate_image_sizes', 'delete_intermediate_image_sizes' );
 
 function custom_widgets_init() {
   register_sidebar(array(
-    'name'          => esc_html__('Sidebar blog', 'aug24'),
+    'name'          => 'Sidebar blog',
     'id'            => "sidebar-blog",
     'before_widget' => '<section id="%1$s" class="sidebar-widget %2$s">',
     'after_widget'  => '</section>',
@@ -159,7 +159,7 @@ function custom_widgets_init() {
     'after_title'   => '</h5>'
   ));
   register_sidebar(array(
-    'name'          => esc_html__('Текст в подвале', 'aug24'),
+    'name'          => 'Текст в подвале',
     'id'            => "sidebar-footer-text",
     'before_widget' => '<div class="footer-widget footer-link %2$s">',
     'after_widget'  => '</div>',
@@ -167,7 +167,7 @@ function custom_widgets_init() {
     'after_title'   => '</h4>'
   ));
   register_sidebar(array(
-    'name'          => esc_html__('Контакты в подвале', 'aug24'),
+    'name'          => 'Контакты в подвале',
     'id'            => "sidebar-footer-contacts",
     'before_widget' => '<div class="footer-widget footer-text %2$s">',
     'after_widget'  => '</div>',
@@ -231,15 +231,15 @@ class Download_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
     <p>
-			<label for="<?php echo $this->get_field_id( 'file_name' ); ?>"><?php _e( 'Название файла:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'file_name' ); ?>">Название файла:</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'file_name' ); ?>" name="<?php echo $this->get_field_name( 'file_name' ); ?>" type="text" value="<?php echo esc_attr( $file_name ); ?>">
 		</p>
     <p>
-			<label for="<?php echo $this->get_field_id( 'file' ); ?>"><?php _e( 'Ссылка на файл:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'file' ); ?>">Ссылка на файл:</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'file' ); ?>" name="<?php echo $this->get_field_name( 'file' ); ?>" type="text" value="<?php echo esc_attr( $file ); ?>">
 		</p>
 		<?php
@@ -540,7 +540,7 @@ class Bootstrap_Walker_Comment extends Walker {
 		?>
 		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( '', $comment ); ?>>
 			<div class="comment-body">
-				<?php _e( 'Pingback:' ); ?> <?php comment_author_link( $comment ); ?> <?php edit_comment_link( __( 'Edit' ), '<span class="edit-link">', '</span>' ); ?>
+				Pingback: <?php comment_author_link( $comment ); ?> <?php edit_comment_link( 'Edit' , '<span class="edit-link">', '</span>' ); ?>
 			</div>
 		<?php
 	}
@@ -592,9 +592,9 @@ class Bootstrap_Walker_Comment extends Walker {
 		$show_pending_links = isset( $commenter['comment_author'] ) && $commenter['comment_author'];
 
 		if ( $commenter['comment_author_email'] ) {
-			$moderation_note = __( 'Your comment is awaiting moderation.' );
+			$moderation_note = 'Your comment is awaiting moderation.' ;
 		} else {
-			$moderation_note = __( 'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.' );
+			$moderation_note = 'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.' ;
 		}
 		?>
 		<<?php echo $tag; ?> <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?> id="comment-<?php comment_ID(); ?>">
@@ -617,7 +617,7 @@ class Bootstrap_Walker_Comment extends Walker {
 
 			printf(
 				/* translators: %s: Comment author link. */
-				__( '%s <span class="says">says:</span>' ),
+				'%s <span class="says">says:</span>' ,
 				sprintf( '<cite class="fn">%s</cite>', $comment_author )
 			);
 			?>
@@ -634,13 +634,13 @@ class Bootstrap_Walker_Comment extends Walker {
 				esc_url( get_comment_link( $comment, $args ) ),
 				sprintf(
 					/* translators: 1: Comment date, 2: Comment time. */
-					__( '%1$s at %2$s' ),
+					'%1$s at %2$s' ,
 					get_comment_date( '', $comment ),
 					get_comment_time()
 				)
 			);
 
-			edit_comment_link( __( '(Edit)' ), ' &nbsp;&nbsp;', '' );
+			edit_comment_link( '(Edit)' , ' &nbsp;&nbsp;', '' );
 			?>
 		</div>
 
@@ -697,9 +697,9 @@ class Bootstrap_Walker_Comment extends Walker {
 		$show_pending_links = ! empty( $commenter['comment_author'] );
 
 		if ( $commenter['comment_author_email'] ) {
-			$moderation_note = __( 'Your comment is awaiting moderation.' );
+			$moderation_note = 'Your comment is awaiting moderation.' ;
 		} else {
-			$moderation_note = __( 'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.' );
+			$moderation_note = 'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.' ;
 		}
 		?>
 		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?>>
@@ -734,13 +734,13 @@ class Bootstrap_Walker_Comment extends Walker {
 							get_comment_time( 'c' ),
 							sprintf(
 								/* translators: 1: Comment date, 2: Comment time. */
-								__( '%1$s at %2$s' ),
+								'%1$s at %2$s' ,
 								get_comment_date( 'j F Y', $comment ),
 								get_comment_time('')
 							)
 						);
 
-						edit_comment_link( __( 'Edit' ), ' <span class="edit-link">', '</span>' );
+						edit_comment_link( 'Edit' , ' <span class="edit-link">', '</span>' );
 						?>
 					</div><!-- .comment-metadata -->
 
@@ -780,18 +780,18 @@ function register_post_types(){
 	register_post_type( 'service', [
 		'label'  => null,
 		'labels' => [
-			'name'               => __('Услуги'), // основное название для типа записи
-			'singular_name'      => __('Услуга'), // название для одной записи этого типа
-			'add_new'            => __('Добавить услуги'), // для добавления новой записи
-			'add_new_item'       => __('Добавление услуги'), // заголовка у вновь создаваемой записи в админ-панели.
-			'edit_item'          => __('Редактирование услуги'), // для редактирования типа записи
-			'new_item'           => __('Новая услуги'), // текст новой записи
-			'view_item'          => __('Смотреть услугу'), // для просмотра записи этого типа.
-			'search_items'       => __('Искать услугу'), // для поиска по этим типам записи
-			'not_found'          => __('Не найдено услуг'), // если в результате поиска ничего не было найдено
-			'not_found_in_trash' => __('Не найдено в корзине'), // если не было найдено в корзине
+			'name'               => 'Услуги', // основное название для типа записи
+			'singular_name'      => 'Услуга', // название для одной записи этого типа
+			'add_new'            => 'Добавить услуги', // для добавления новой записи
+			'add_new_item'       => 'Добавление услуги', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактирование услуги', // для редактирования типа записи
+			'new_item'           => 'Новая услуги', // текст новой записи
+			'view_item'          => 'Смотреть услугу', // для просмотра записи этого типа.
+			'search_items'       => 'Искать услугу', // для поиска по этим типам записи
+			'not_found'          => 'Не найдено услуг', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
 			'parent_item_colon'  => '', // для родителей (у древовидных типов)
-			'menu_name'          => __('Услуги'), // название меню
+			'menu_name'          => 'Услуги', // название меню
 		],
 		'description'            => '',
 		'public'                 => true,
@@ -819,18 +819,18 @@ function register_post_types(){
   register_post_type( 'partners', [
 		'label'  => null,
 		'labels' => [
-			'name'               => __('Партнеры'), // основное название для типа записи
-			'singular_name'      => __('Партнер'), // название для одной записи этого типа
-			'add_new'            => __('Добавить партнера'), // для добавления новой записи
-			'add_new_item'       => __('Добавление партнера'), // заголовка у вновь создаваемой записи в админ-панели.
-			'edit_item'          => __('Редактирование партнера'), // для редактирования типа записи
-			'new_item'           => __('Новый партнер'), // текст новой записи
-			'view_item'          => __('Смотреть партнера'), // для просмотра записи этого типа.
-			'search_items'       => __('Искать партнера'), // для поиска по этим типам записи
-			'not_found'          => __('Не найдено партнера'), // если в результате поиска ничего не было найдено
-			'not_found_in_trash' => __('Не найдено в корзине'), // если не было найдено в корзине
+			'name'               => 'Партнеры', // основное название для типа записи
+			'singular_name'      => 'Партнер', // название для одной записи этого типа
+			'add_new'            => 'Добавить партнера', // для добавления новой записи
+			'add_new_item'       => 'Добавление партнера', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактирование партнера', // для редактирования типа записи
+			'new_item'           => 'Новый партнер', // текст новой записи
+			'view_item'          => 'Смотреть партнера', // для просмотра записи этого типа.
+			'search_items'       => 'Искать партнера', // для поиска по этим типам записи
+			'not_found'          => 'Не найдено партнера', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
 			'parent_item_colon'  => '', // для родителей (у древовидных типов)
-			'menu_name'          => __('Партнеры'), // название меню
+			'menu_name'          => 'Партнеры', // название меню
 		],
 		'description'            => '',
 		'public'                 => true,

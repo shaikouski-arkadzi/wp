@@ -9,7 +9,7 @@
         <div class="banner-content content-padding">
           <h1 class="text-white">
             <?php
-              printf(esc_html__('Search Results for: %s', 'aug24'), '<span>' . get_search_query() . '</span>');
+              printf('Search Results for: %s', '<span>' . get_search_query() . '</span>');
             ?>
           </h1>
           <p>Полезные статьи про маркетинг и диджитал</p>
@@ -100,11 +100,11 @@
               'end_size'     => 1,     // количество страниц на концах
               'mid_size'     => 1,     // количество страниц вокруг текущей
               'prev_next'    => true,  // выводить ли боковые ссылки "предыдущая/следующая страница".
-              'prev_text'    => __('<span class="p-2">« Previous</span>'),
-              'next_text'    => __('<span class="p-2">Next »</span>'),
+              'prev_text'    => '<span class="p-2">« Previous</span>',
+              'next_text'    => '<span class="p-2">Next »</span>',
               'add_args'     => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
               'add_fragment' => '',     // Текст который добавиться ко всем ссылкам.
-              'screen_reader_text' => __( 'Posts navigation' ),
+              'screen_reader_text' => 'Posts navigation',
               'class'        => 'pagination', // CSS класс, добавлено в 5.5.0.
               'before_page_number' => '<span class="p-2">',
               'after_page_number' => '</span>',

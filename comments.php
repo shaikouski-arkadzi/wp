@@ -23,7 +23,7 @@
           'callback'          => null,
           'end-callback'      => null,
           'type'              => 'all',
-          'reply_text'        => __('Ответить <i class="fa fa-reply"></i>'),
+          'reply_text'        => 'Ответить <i class="fa fa-reply"></i>',
           'page'              => '',
           'per_page'          => '10',
           'avatar_size'       => 80,
@@ -42,7 +42,7 @@
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'aug24' ); ?></p>
+			<p class="no-comments">Comments are closed.</p>
 			<?php
 		endif;
 
@@ -62,13 +62,13 @@
       <textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" required="required"></textarea>
     </p>',
     'must_log_in'          => '<p class="must-log-in">' .
-       sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink() ) ) ) . '
+       sprintf( 'You must be <a href="%s">logged in</a> to post a comment.' , wp_login_url( apply_filters( 'the_permalink', get_permalink() ) ) ) . '
      </p>',
     'logged_in_as'         => '<p class="logged-in-as">' .
-       sprintf( __( '<a href="%1$s" aria-label="Logged in as %2$s. Edit your profile.">Вы вошли как %2$s</a>. <a href="%3$s">Разлогиниться?</a>' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) ) ) . '
+       sprintf('<a href="%1$s" aria-label="Logged in as %2$s. Edit your profile.">Вы вошли как %2$s</a>. <a href="%3$s">Разлогиниться?</a>' , get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) ) ) . '
      </p>',
     'comment_notes_before' => '<p class="comment-notes">
-      <span id="email-notes">' . __( 'Ваш e-mail защищен от спама' ) . '</span>
+      <span id="email-notes">' . 'Ваш e-mail защищен от спама'  . '</span>
     </p>',
     'comment_notes_after'  => '',
     'id_form'              => 'commentform',
@@ -77,14 +77,14 @@
     'class_form'           => 'comment-form',
     'class_submit'         => 'btn btn-hero btn-circled',
     'name_submit'          => 'submit',
-    'title_reply'          => __( 'Ответить на комментарий' ),
-    'title_reply_to'       => __( 'Ответить %s' ),
+    'title_reply'          => 'Ответить на комментарий' ,
+    'title_reply_to'       =>  'Ответить %s',
     'title_reply_before'   => '<h3 id="reply-title" class="comment-reply-title">',
     'title_reply_after'    => '</h3>',
     'cancel_reply_before'  => ' <small>',
     'cancel_reply_after'   => '</small>',
-    'cancel_reply_link'    => __( 'Отменить' ),
-    'label_submit'         => __( 'Отправить' ),
+    'cancel_reply_link'    => 'Отменить' ,
+    'label_submit'         => 'Отправить' ,
     'submit_button'        => '<button name="%1$s" type="submit" id="%2$s" class="%3$s">%4$s</button>',
     'submit_field'         => '<p class="form-submit">%1$s %2$s</p>',
     'format'               => 'html5',
