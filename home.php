@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-8 m-auto text-center col-sm-12 col-md-12">
         <div class="banner-content content-padding">
-          <h1 class="text-white">Promodise журнал</h1>
+          <h1 class="text-white"><?php _e('журнал', 'aug24')?></h1>
           <p>Полезные статьи про маркетинг и диджитал</p>
         </div>
       </div>

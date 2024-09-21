@@ -2,6 +2,7 @@
 
   if(!function_exists('pre_setup')) {
     function pre_setup() {
+			load_theme_textdomain( 'aug24', get_template_directory() . '/languages' );
       add_theme_support('custom-logo', [
         'height'      => 50,
         'width'       => 130,
